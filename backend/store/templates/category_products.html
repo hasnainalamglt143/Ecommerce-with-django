@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if products %}
+<div class="p-0">
+   <div class="bg-black mb-10 w-full h-40 flex items-center justify-center">
+   <h1 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl text-white">
+        Category: {{ category.name }}
+        </h1>
+   </div>
+       
+    <div class="products w-full flex justify-center space-x-4 space-y-6 items-center md:justify-between md:space-y-10 w-full overflow-hidden flex-wrap">
+        {% for product in products %}
+        {% include 'components/productCard.html' with product=product %}
+        {% endfor %}
+    </div>
+
+{% endif %}
+
+{% endblock %}
+
+
+

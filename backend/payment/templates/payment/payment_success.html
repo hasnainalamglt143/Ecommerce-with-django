@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="bg-white shadow-lg rounded-xl p-6 w-96 text-center">
+        <h1 class="text-xl font-bold mb-4">Processing Payment...</h1>
+        <div id="loading" class="flex justify-center mb-4">
+            <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <p id="status-text" class="text-gray-600">We are verifying your payment. Please wait...</p>
+    </div>
+
+    <script>
+        const orderId = "{{ order_id }}";
+        const statusText = document.getElementById("status-text");
+        const loading = document.getElementById("loading");
+
+        async function checkStatus() {
+            try {
+                let response = await fetch(`http://127.0.0.1:8000/payment/check-status/${orderId}/`,{
+                    method:"POST",
+
+                });
+                let data = await response.json();
+                console.log(data)
+
+                if (data.paid) {
+                    loading.style.display = "none";
+                    statusText.innerHTML = "<span class='text-green-600 font-semibold'>✅ Payment confirmed!</span>";
+                } else {
+                    setTimeout(checkStatus, 3000); // retry in 3s
+                }
+            } catch (err) {
+                console.error(err);
+                statusText.innerHTML = "<span class='text-red-600'>Error checking payment.</span>";
+            }
+        }
+
+        checkStatus();
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,137 @@
+
+
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div class="btn btn-ghost lg:hidden" role="button" tabindex="0">
+        <svg class="h-5 w-5"
+             fill="none"
+             stroke="currentColor"
+             viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h8m-8 6h16"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2" />
+          
+        </svg>
+      </div>
+      <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          tabindex="0">
+        <li>
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+          <a>About</a>
+        </li>
+        
+        {% if not user.is_authenticated %}
+      
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        {% else %}
+           <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% endif %}
+        <li>
+          <a>Categories</a>
+          <ul class="p-2">
+            <li>
+              <a  href="{% url 'home'  %}">All products</a>
+            </li>
+            {% for category in categories %}
+            <li>
+              <a  href="{% url 'product-category' category=category.id %}">{{category.name}}</a>
+            </li>
+           {% endfor%}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost text-xl">HasnainCommerce</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <a href="{% url 'home' %}">Home</a>
+      </li>
+
+      <li>
+        <a href="{% url 'search-products' %}">Search</a>
+      </li> 
+
+      <li>
+        <a>About</a>
+      </li>
+     {% if not user.is_authenticated %}
+      
+        <li>
+          <a href="{% url 'login' %}">Login</a>
+        </li>
+        {% else %}
+           <li>
+          <a href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li>
+        <details>
+          <summary>Profile</summary>
+          <ul class="p-2 w-[200px] z-100">
+           <li>
+        <a href="{% url 'update-user' %}">Profile</a>
+      </li>
+       <li>
+        <a href="{% url 'update-user-info' %}">User info</a>
+      </li>
+
+          </ul>
+        </details>
+      </li>
+        {% endif %}
+
+         {% if user.is_superuser %}
+        <li>
+        <details>
+          <summary>Orders</summary>
+          <ul class="p-2 w-[200px] z-100">
+           <li>
+        <a href="{% url 'shipped-orders' %}">Shipped Orders</a>
+      </li>
+       <li>
+        <a href="{% url 'unshipped-orders' %}">UnShipped Orders</a>
+      </li>
+    </ul>
+        </details>
+      </li>
+        {% endif %}
+
+      <li>
+        <details>
+          <summary>Categories</summary>
+          <ul class="p-2 w-[200px] z-100">
+            <li>
+              <a href="{% url 'home' %}">All products</a>
+            </li>
+            {% for category in categories %}
+            <li>
+              <a  href="{% url 'product-category' category=category.name %}">{{category.name}}</a>
+            </li>
+           {% endfor%}
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <a class="btn" href="{% url 'cart_summary' %}">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      <span id="cart_quantity" class="ml-2 btn px-2 bg-black/80 w-fit h-fit rounded-full text-white">
+        {{cart|length}}
+      </span>
+    </a>
+  </div>
+</div>

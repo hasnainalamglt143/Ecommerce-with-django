@@ -1,0 +1,43 @@
+<div class="card bg-base-100 w-96 shadow-sm m-4 hover:scale-105 transition-transform">
+    <div class="relative">
+        <figure class="h-[300px] w-full overflow-hidden flex items-center justify-center bg-gray-50 border-b border-gray-100">
+            {% if product.image.url %}
+            <img alt="{{ product.name }}"
+                 class="h-full w-full object-cover object-center aspect-[4/3]"
+                 src="{{ product.image.url }}" />
+            {% else %}
+            <img alt="No image available"
+                 class="h-full w-full object-cover object-center aspect-[4/3]"
+                 src="https://via.placeholder.com/300x300?text=No+Image" />
+            {% endif %}
+        </figure>
+        {% if product.is_sale %}
+        <div class="absolute top-10 right-10 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+            Sale
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card-body">
+        <h2 class="card-title">{{ product.name }}</h2>
+
+        <!-- 💰 Pricing -->
+        {% if product.is_sale %}
+        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
+            <strike>{{ product.price }}$</strike>
+
+            <span>{{ product.sale_price}}$</span>
+        </p>
+        {% else %}
+        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
+            <span>{{ product.price}}$</span>
+        </p>
+        {% endif %}
+        <!-- 🛒 Button -->
+        <div class="card-actions justify-center mt-4">
+            <a class="btn" href="{% url 'product-detail' product.id %}">
+                View Details
+            </a>
+        </div>
+    </div>
+</div>

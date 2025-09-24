@@ -1,0 +1,76 @@
+admin_auths
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+/media
+/staticfiles
+/static/
+
+# Migrations (optional: ignore only if auto-generated; usually keep them!)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+# Uncomment below if you want to ignore all migrations (not recommended for teams)
+# */migrations/*
+
+# Environment variables
+.env
+*.env
+.env.*
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# PyCharm settings
+.idea/
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Coverage / testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MyPy & Pyre type checker
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Build / packaging
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+.installed.cfg
+*.egg
+
+# Local configs
+settings_local.py

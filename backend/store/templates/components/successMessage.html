@@ -1,0 +1,21 @@
+
+
+<div 
+     class="fixed top-6 hidden left-1/2 w-full max-w-lg transform -translate-x-1/2 z-50 space-y-3 mx-auto " id="message-container">
+    <div class="flex items-center justify-between p-4 rounded-xl shadow-lg text-white animate-fade-in-down bg-green-500
+      " role="alert">
+
+        <!-- Icon + Text -->
+        <div class="flex items-center space-x-3">
+            <div class="text-xl">
+                ✅
+               
+            </div>
+            <div class="text-sm font-medium"  id="success_message" ></div>
+        </div>
+
+        <!-- Close button -->
+        <button onclick="this.parentElement.remove()"
+                class="ml-3 text-white hover:text-gray-200 focus:outline-none transition">✕</button>
+    </div>
+</div>

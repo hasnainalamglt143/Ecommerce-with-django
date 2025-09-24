@@ -1,0 +1,31 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>commerce with us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% tailwind_css %}
+    <script src={% static "js/carousel.js" %}></script>
+    <script src={% static "js/add_to_cart.js" %}></script>
+    <script src={% static "js/stripe_payment.js" %}></script>
+    <script src="https://kit.fontawesome.com/81874f1d71.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/basil/stripe.js"></script>
+
+<link rel="stylesheet" href="{% static 'css/dist/custom-styles.css' %}">
+</head>
+
+<body class="bg-gray-50 w-screen overflow-x-hidden relative text-black font-serif leading-normal tracking-normal">
+    {% include 'components/navbar.html' with categories=categories %}
+    {% include 'components/toast.html' %}
+    {% include 'components/successMessage.html' %}
+    {% block content %}
+    {% endblock %}
+    {% include 'components/footer.html'%}
+    {% if debug %}
+        {% include 'django_browser_reload/script.html' %}
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden my-12">
+    <div class="md:flex">
+        <!-- Left: Image (horizontal) -->
+        <div class="md:w-1/2 w-full h-64 md:h-96 bg-gray-100 flex items-center justify-center overflow-hidden">
+            {% if product.image and product.image.url %}
+            <img alt="{{ product.name }}"
+                 class="w-full h-full object-cover"
+                 src="{{ product.image.url }}" />
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center text-gray-400">
+                <svg class="w-24 h-24"
+                     fill="none"
+                     stroke="currentColor"i
+                     viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 7a4 4 0 014-4h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7z"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5" />
+                    
+
+                    <path d="M8 13l2.5 3L15 11"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5" />
+                    
+                </svg>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Right: Details -->
+        <div class="md:w-1/2 w-full p-6 flex flex-col justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">
+                    {{ product.name }}
+                </h1>
+                <p class="mt-2 text-sm text-gray-500 leading-relaxed">
+                    {{ product.description|default:"No description available." }}
+                </p>
+
+                <!-- Rating & Reviews -->
+                <div class="mt-4 flex items-center space-x-3">
+                    <div class="flex items-center text-yellow-400 space-x-1">
+                        <!-- example static stars, replace with dynamic logic if needed -->
+                        <svg class="w-5 h-5"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.97c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.175 0L6.07 17.96c-.784.57-1.838-.196-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.094 7.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.239-3.98z" />
+                            
+                        </svg>
+                        <svg class="w-5 h-5"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.97c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.175 0L6.07 17.96c-.784.57-1.838-.196-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.094 7.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.239-3.98z" />
+                            
+                        </svg>
+                        <svg class="w-5 h-5"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.97c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.175 0L6.07 17.96c-.784.57-1.838-.196-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.094 7.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.239-3.98z" />
+                            
+                        </svg>
+                        <svg class="w-5 h-5"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.97c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.175 0L6.07 17.96c-.784.57-1.838-.196-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.094 7.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.239-3.98z" />
+                            
+                        </svg>
+                        <svg class="w-5 h-5 text-gray-300"
+                             fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.379 2.455a1 1 0 00-.364 1.118l1.287 3.97c.3.922-.755 1.688-1.54 1.118l-3.38-2.455a1 1 0 00-1.175 0L6.07 17.96c-.784.57-1.838-.196-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118L2.094 7.397c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.239-3.98z" />
+                            
+                        </svg>
+                    </div>
+
+                    <div class="text-sm text-gray-500">(4.0 · 120 reviews)</div>
+                </div>
+
+                <!-- Badges -->
+                <div class="mt-4 flex gap-2 flex-wrap">
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        In stock
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                        Free shipping
+                    </span>
+                </div>
+            </div>
+
+            <!-- Price + Actions -->
+                <div>
+                    <div class="text-gray-500 text-sm">Price</div>
+                    <div class="flex items-baseline gap-3">
+                        {% if product.is_sale %}
+                        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
+                            <strike>{{ product.price }}$</strike>
+
+                            <span>{{ product.sale_price}}$</span>
+                        </p>
+                        {% else %}
+                        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
+                            <span>{{ product.price}}$</span>
+                        </p>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 justify-center">
+                    <input class="w-20 text-center border rounded-md px-2 py-1"
+                           min="1"
+                           type="number"
+                           value="1" id="quantity-input" />
+                    <button class="px-4 py-2 cursor-pointer hover:bg-blue-600 transition-color bg-blue-600 text-white rounded-lg" value={{product.id}} id="add-to-cart-btn" type="button">
+                        Add to Cart
+                    </button>
+                </div>
+        </div>
+    </div>
+</div>

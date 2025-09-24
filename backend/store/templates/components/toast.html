@@ -1,0 +1,46 @@
+
+{% if messages %}
+<div id="toast-container"
+     class="fixed top-6 left-1/2 w-full max-w-lg transform -translate-x-1/2 z-50 space-y-3 mx-auto">
+    {% for message in messages %}
+    <div class="flex items-center justify-between p-4 rounded-xl shadow-lg text-white animate-fade-in-down
+        {% if message.tags == 'success' %} bg-green-500
+        {% elif message.tags == 'error' %} bg-red-500
+        {% elif message.tags == 'warning' %} bg-yellow-500
+        {% else %} bg-blue-500 {% endif %}" role="alert">
+
+        <!-- Icon + Text -->
+        <div class="flex items-center space-x-3">
+            <div class="text-xl">
+                {% if message.tags == 'success' %}
+                ✅
+                {% elif message.tags == 'error' %}
+                ❌
+                {% elif message.tags == 'warning' %}
+                ⚠️
+                {% else %}
+                ℹ️
+                {% endif %}
+            </div>
+            <div class="text-sm font-medium {% if message.tags == 'error' %} text-white {% endif %}">{{ message }}</div>
+        </div>
+
+        <!-- Close button -->
+        <button onclick="this.parentElement.remove()"
+                class="ml-3 text-white hover:text-gray-200 focus:outline-none transition">✕</button>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Optional animation -->
+<style>
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down {
+  animation: fade-in-down 0.3s ease-out;
+}
+</style>
+{% endif %}
+

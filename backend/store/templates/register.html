@@ -1,0 +1,32 @@
+
+{% extends 'base.html'%}
+{% block content %}
+<section class="bg-gray-50 dark:bg-gray-900 py-3 w-full max-w-screen"> 
+    <div class="flex flex-col w-10/12 sm:w-10/12 md:w-2/5 items-center justify-center  mx-auto mt-y lg:py-0 md:flex-row ">
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700 ">
+            <div class="space-y-4 md:space-y-6 p-4 w-full">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Create and account
+                </h1>
+
+                <form action="#" method="POST" class="o space-y-4 md:space-y-6 w-full">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+                    <button class="w-full text-white bg-blue-500 btn btn-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                            type="submit">
+                        Create an account
+                    </button>
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                        Already have an account?
+                        <a class="font-medium text-blue-500 hover:underline"
+                           href="{% url 'login' %}">
+                            Login here
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
