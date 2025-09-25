@@ -75,6 +75,8 @@ def shipped_orders(request):
      else:
         messages.error(request, "Access denied")
         return redirect("home")
+     
+
 
 def unshipped_orders(request):
      if request.user.is_authenticated and request.user.is_superuser:
@@ -148,7 +150,7 @@ def create_checkout_session(request):
         cart_items = cart.get_prods()
         if not cart_items:
             # print("empty cart")
-            return render(request,"cart/cart-summary.html",context={"cart_products":cart_items})
+            return render(request,"cart/cart_summary.html",context={"cart_products":cart_items})
 
         # shipping info from session
         my_shipping = json.loads(request.session.get("shipping_info", "{}"))
@@ -287,7 +289,24 @@ def stripe_webhook(request):
 def checkout_success(request):
     """Render success page with loader"""
     order_id=request.session["order_id"]
-    return render(request, "payment/payment_success.html", {"order_id": int(order_id)})
+    try:
+        order = get_object_or_404(
+        Order.objects.prefetch_related('orderitem_set__product'),
+        pk=int(order_id)
+    )
+        items = order.orderitem_set.all()
+   
+        subtotal = sum(item.quantity * item.price for item in items)
+        context = {
+        "order": order,
+        "items": items,
+        "subtotal": subtotal,
+    }
+        return render(request, "payment/payment_success.html", context)
+
+    except:
+        messages.error(request,"could not process payment.contact to support service")
+        return redirect("home")
 
 
 @csrf_exempt
@@ -295,8 +314,8 @@ def check_order_status(request, order_id):
     """AJAX endpoint for polling"""
     if request.method=="POST":
         order = get_object_or_404(Order, id=order_id)
+        cart=Cart(request)
         if order.paid:
-            cart=Cart(request)
             cart.clear_cart()
         return JsonResponse({"paid": order.paid})
     messages.error(request,"request not allowed")
