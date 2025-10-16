@@ -10,11 +10,8 @@ __pycache__/
 *.log
 *.pot
 *.pyc
-# *.sqlite3
-# db.sqlite3
+
 /media
-# /staticfiles
-# /static/
 
 # Migrations (optional: ignore only if auto-generated; usually keep them!)
 */migrations/__pycache__/
@@ -66,7 +63,6 @@ dmypy.json
 # Build / packaging
 *.egg-info/
 .eggs/
-dist/
 build/
 develop-eggs/
 .installed.cfg
