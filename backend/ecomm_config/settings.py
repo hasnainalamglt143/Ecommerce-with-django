@@ -203,3 +203,13 @@ STRIPE_PUBLIC_KEY=os.getenv("STRIPE_PUBLIC_KEY")
 WEBHOOK_ACCOUNT_ID=os.getenv("WEBHOOK_ACCOUNT_ID")
 
 STRIPE_WEBHOOK_SECRET=os.getenv("STRIPE_WEBHOOK_SECRET")
+
+
+
+TAILWIND_APP_NAME = 'store'
+INTERNAL_IPS = [
+    "127.0.0.1:8000",
+    "localhost:8000",
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
