@@ -29,7 +29,7 @@ DEBUG = True
 if os.getenv("ENVIRONMENT") == "production":
     DEBUG = False
 
-ALLOWED_HOSTS = ["http://127.0.0.1:8000","localhost","*.vercel.app"]
+ALLOWED_HOSTS = ["http://127.0.0.1:8000","localhost","https://ecommerce-with-django-xpoy-qyhdwrffu.vercel.app"]
 
 
 # Application definition
