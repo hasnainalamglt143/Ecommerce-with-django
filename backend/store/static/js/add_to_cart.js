@@ -1,4 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", function() {
+    let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
+
     const addToCartBtn = document.getElementById("add-to-cart-btn");
     const cartQuantitySpan = document.getElementById("cart_quantity");
     const successMessageDiv = document.getElementById("success_message");
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const productId = cartItem.dataset.productId;
             const quantity = cartItem.querySelector(".quantity-input").value;
             console.log("Updating product ID:", productId, "to quantity:", quantity);
-            fetch("http://127.0.0.1:8000/cart/update/", {
+            fetch(`${domain}/cart/update/`, {
                 method: "POST", // or PUT, depending on your backend
                 headers: {
                     "Content-Type": "application/json",
@@ -79,7 +82,7 @@ document.querySelectorAll("button.delete-btn").forEach(button => {
         const cartItem = this.closest(".update-delete-btns-container"); // parent container
         const productId = cartItem.dataset.productId;
 
-        fetch("http://127.0.0.1:8000/cart/delete/", {
+        fetch(`${domain}/cart/delete/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

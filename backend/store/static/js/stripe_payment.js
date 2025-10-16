@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
+let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
 
     // This is your test publishable API key.
 const stripe = Stripe("pk_test_51SAEjNA3TUrmlb8qtv5idsHdB3ehfK45bzvhepINv6k2cZ2C5hJI46OARRCJC3HR4JOtHuC1QJSNy7GIBwE40MA800RJDTe3Vn");
@@ -8,7 +9,7 @@ initialize();
 // Create a Checkout Session
 async function initialize() {
   const fetchClientSecret = async () => {
-    const response = await fetch("http://127.0.0.1:8000/payment/create-checkout-session/", {
+    const response = await fetch(`${domain}/payment/create-checkout-session/`, {
       method: "POST",
        headers: {
                 "X-CSRFToken": csrftoken

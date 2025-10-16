@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% block content %}
 {% include 'components/carousel.html' %}
@@ -5,7 +6,7 @@
     <h1 class="mb-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         We invest in the world’s potential
     </h1>
-    <div class="products flex justify-center space-x-4 space-y-6 items-center md:space-x-10 md:space-y-10 w-full overflow-hidden flex-wrap m">
+    <div class="products flex flex-wrap justify-center items-center gap-4 md:gap-6 w-full overflow-hidden border">
         {% for product in products %}
         {% include 'components/productCard.html' with product=product %}
         {% endfor %}
