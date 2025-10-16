@@ -13,8 +13,8 @@ __pycache__/
 # *.sqlite3
 # db.sqlite3
 /media
-/staticfiles
-/static/
+# /staticfiles
+# /static/
 
 # Migrations (optional: ignore only if auto-generated; usually keep them!)
 */migrations/__pycache__/
