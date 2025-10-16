@@ -161,7 +161,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR ,'staticfiles')
-STATIC_FILES_DIRS = [os.path.join(BASE_DIR,'store/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'store/static')]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -181,7 +181,7 @@ LOGIN_REDIRECT_URL = '/'
 
 TAILWIND_APP_NAME = 'store'
 
-# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 # INTERNAL_IPS = [
 #     "127.0.0.1:8000",
