@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-
-
-  const slider = document.getElementById("slider");
+const slider = document.getElementById("slider");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
