@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const productId = this.value;
             const quantityInput = document.querySelector("#quantity-input");
             const quantity = quantityInput.value;
+            console.log("csrf token",csrftoken)
 
             fetch(`${domain}/cart/add/`, {
                 method: "POST",
                 headers: {
+                    'X-CSRFToken': csrftoken,
                     "Content-Type": "application/json",
-                    "X-CSRFToken": csrftoken
                 },
                 body: JSON.stringify({
                     product_id: productId,
@@ -141,7 +142,8 @@ document.querySelectorAll("button.delete-btn").forEach(button => {
         }
         return cookieValue;
     }
-    const csrftoken = getCookie('csrftoken');
+
+    var csrftoken = getCookie('csrftoken');
 
     function updateCartQuantity(newQuantity) {
         if (cartQuantitySpan) {
