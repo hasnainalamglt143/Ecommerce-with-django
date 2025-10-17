@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .cart import Cart
 import json
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -14,6 +15,8 @@ def cart_summary(request):
     cart_products = Cart(request).get_prods()
     return render(request, 'cart/cart_summary.html',context={"cart_products":cart_products})
 
+
+@csrf_exempt
 def cart_add(request):
     cart=Cart(request)
     if request.method == "POST":
@@ -41,7 +44,7 @@ def cart_summary(request):
         "total_amount":cart.get_totals(),
     })
 
-
+@csrf_exempt
 def cart_remove(request):
     cart = Cart(request)
     if request.method == "POST":
@@ -54,7 +57,7 @@ def cart_remove(request):
     
     return JsonResponse({"ok": False}, status=400)
 
-
+@csrf_exempt
 def cart_update(request):
     cart=Cart(request)
     if request.method == "POST":

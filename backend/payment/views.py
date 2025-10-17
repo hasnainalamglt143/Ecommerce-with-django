@@ -47,10 +47,10 @@ def checkout(request):
 
 
 
-@login_required
+@csrf_exempt
 def billing_info(request):
     cart=Cart(request)
-    if request.method=="POST":
+    if request.method=="POST" and request.user.is_authenticated:
          shipping_user = ShippingAddress.objects.get(customer__id=request.user.id)
 		# Shipping Form
          shipping_user = ShippingAddress.objects.get(customer__id=request.user.id)
@@ -140,6 +140,7 @@ def mark_shipping_status(request,order_id):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@csrf_exempt
 def create_checkout_session(request):
     if request.method == "POST":
         if not request.user.is_authenticated:
