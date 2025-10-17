@@ -33,7 +33,8 @@ if os.getenv("ENVIRONMENT") == "production":
     DEBUG = False
 
 ALLOWED_HOSTS = [
-    "*"
+    "*",
+    '.vercel.app',
     # "127.0.0.1",
     # "localhost",
     # "ecommerce-with-django-xpoy-qyhdwrffu.vercel.app",
