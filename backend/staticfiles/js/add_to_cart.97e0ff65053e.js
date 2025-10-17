@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
+    var domain="http://127.0.0.1:8000"
 
     const addToCartBtn = document.getElementById("add-to-cart-btn");
     const cartQuantitySpan = document.getElementById("cart_quantity");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const productId = this.value;
             const quantityInput = document.querySelector("#quantity-input");
             const quantity = quantityInput.value;
-
+            console.log("Adding product ID:", productId, "with quantity:", quantity,`${domain}/cart/add/`);
             fetch(`${domain}/cart/add/`, {
                 method: "POST",
                 headers: {
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const productId = cartItem.dataset.productId;
             const quantity = cartItem.querySelector(".quantity-input").value;
             console.log("Updating product ID:", productId, "to quantity:", quantity);
+
             fetch(`${domain}/cart/update/`, {
                 method: "POST", // or PUT, depending on your backend
                 headers: {

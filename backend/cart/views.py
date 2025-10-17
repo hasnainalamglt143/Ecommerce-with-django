@@ -18,6 +18,7 @@ def cart_add(request):
     cart=Cart(request)
     if request.method == "POST":
         data = json.loads(request.body)
+        print(data)
         product_id = data.get("product_id")
         quantity = data.get("quantity")
         product = get_object_or_404(Product, id=product_id)

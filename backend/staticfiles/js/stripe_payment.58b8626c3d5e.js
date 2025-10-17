@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded",()=>{
-let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
+const domain="http://127.0.0.1:8000"
 
     // This is your test publishable API key.
 const stripe = Stripe("pk_test_51SAEjNA3TUrmlb8qtv5idsHdB3ehfK45bzvhepINv6k2cZ2C5hJI46OARRCJC3HR4JOtHuC1QJSNy7GIBwE40MA800RJDTe3Vn");

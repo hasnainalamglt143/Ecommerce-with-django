@@ -6,7 +6,7 @@
     <h1 class="mb-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         We invest in the world’s potential
     </h1>
-    <div class="products flex flex-wrap justify-center items-center gap-4 md:gap-6 w-full overflow-hidden border">
+    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-x-20">
         {% for product in products %}
         {% include 'components/productCard.html' with product=product %}
         {% endfor %}

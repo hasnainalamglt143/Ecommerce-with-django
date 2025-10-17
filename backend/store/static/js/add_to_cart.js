@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    var domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
+    let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
 
     const addToCartBtn = document.getElementById("add-to-cart-btn");
     const cartQuantitySpan = document.getElementById("cart_quantity");
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const quantityInput = document.querySelector("#quantity-input");
             const quantity = quantityInput.value;
 
-            fetch("http://127.0.0.1:8000/cart/add/", {
+            fetch(`${domain}/cart/add/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

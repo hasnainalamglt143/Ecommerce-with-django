@@ -35,7 +35,7 @@
                 <h1 class="text-2xl font-bold text-gray-800">
                     {{ product.name }}
                 </h1>
-                <p class="mt-2 text-sm text-gray-500 leading-relaxed">
+                <p class="mt-2 text-sm text-gray-500 leading-relaxed line-clamp-3">
                     {{ product.description|default:"No description available." }}
                 </p>
 
@@ -93,7 +93,7 @@
                 <div>
                     <div class="text-gray-500 text-sm">Price</div>
                     <div class="flex items-baseline gap-3">
-                        {% if product.is_sale %}
+                        {% if product.is_sale and product.sale_price %}
                         <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
                             <strike>{{ product.price }}$</strike>
 
