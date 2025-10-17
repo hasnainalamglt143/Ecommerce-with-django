@@ -1,5 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    
     let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
 
     const addToCartBtn = document.getElementById("add-to-cart-btn");

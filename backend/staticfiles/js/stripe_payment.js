@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded",()=>{
+
+
 let domain="https://ecommerce-with-django-2ksm-mtoki0rnj.vercel.app"
 
     // This is your test publishable API key.
