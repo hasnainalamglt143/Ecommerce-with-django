@@ -52,12 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
          'cloudinary_storage',
-
-    'cloudinary',
-    'tailwind',
-    'store',
-    'cart',
-    'payment'
+         'cloudinary',
+          'tailwind',
+          'store',
+          'cart',
+         'payment'
 ]
 
 if DEBUG:
