@@ -3,7 +3,7 @@ module.exports = {
     "@tailwindcss/postcss": {},
     "postcss-simple-vars": {},
     "postcss-nested": {},
-    '@tailwindcss/line-clamp': {},
+    // '@tailwindcss/line-clamp': {},
 
   },
 }

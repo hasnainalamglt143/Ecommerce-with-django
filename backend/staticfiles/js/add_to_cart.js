@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const cartItem = this.closest(".update-delete-btns-container"); // parent container
             const productId = cartItem.dataset.productId;
             const quantity = cartItem.querySelector(".quantity-input").value;
-            console.log("Updating product ID:", productId, "to quantity:", quantity);
             fetch(`${domain}/cart/update/`, {
                 method: "POST", // or PUT, depending on your backend
                 headers: {
