@@ -154,11 +154,11 @@ def create_checkout_session(request):
             return render(request,"cart/cart_summary.html",context={"cart_products":cart_items})
 
         # shipping info from session
-        my_shipping = json.loads(request.session.get("shipping_info", "{}"))
+        my_shipping = json.loads(request.session.get("shipping_info"))
         address = (
             f"{my_shipping['shipping_address1']}\n"
-            f"{my_shipping.get('shipping_address2','')}\n"
-            f"{my_shipping['shipping_city']}\n"
+           f"{my_shipping['shipping_address2']}\n"
+             f"{my_shipping['shipping_city']}\n"
             f"{my_shipping['shipping_state']}\n"
             f"{my_shipping['shipping_postal_code']}\n"
             f"{my_shipping['shipping_country']}"

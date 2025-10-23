@@ -1,45 +1,34 @@
-
-
-<div class="card bg-base-100 w-96 shadow-sm my-5 hover:scale-105 transition-transform">
-    <div class="relative">
-        <figure class="h-[300px] w-full overflow-hidden flex items-center justify-center bg-gray-50 border-b border-gray-100">
-            {% if product.image.url %}
-            <img alt="{{ product.name }}"
-                 class="h-full w-full object-cover object-center aspect-[4/3]"
-                 src="{{ product.image.url }}" />
-            {% else %}
-            <img alt="No image available"
-                 class="h-full w-full object-cover object-center aspect-[4/3]"
-                 src="https://via.placeholder.com/300x300?text=No+Image" />
-            {% endif %}
-        </figure>
-        {% if product.is_sale %}
-        <div class="absolute top-10 right-10 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-            Sale
-        </div>
-        {% endif %}
+<div class="bg-white rounded-lg shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg w-11/12 sm:w-[48%] md:w-[31%] lg:[w-23%] flex-none border border-gray-300 h-[400px]">
+    
+    {% if product.image %}
+      <img 
+        alt="{{ product.name }}" 
+        class="w-full h-60 object-cover" 
+        src="{{ product.image.url }}" />
+    {% else %}
+      <img 
+        alt="{{ product.name }}" 
+        class="w-full h-48 object-cover" 
+        src="https://via.placeholder.com/400x400?text=No+Image" />
+    {% endif %}
+    
+    <div class="p-4 flex flex-col">
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ product.name }}</h3>
+      
+      {% if product.is_sale and product.sale_price %}
+        <p class="text-gray-600">
+          <span class="line-through">{{ product.price }}$</span>
+          <span class="ml-2 text-green-600 font-semibold">{{ product.sale_price }}$</span>
+        </p>
+      {% else %}
+        <p class="text-gray-800 font-semibold">{{ product.price }}$</p>
+      {% endif %}
+      
+      <a href="{% url 'product-detail' product.id %}"
+         class="mt-4 inline-block bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 transition-transform hover:scale-110 self-start">
+        View Product
+      </a>
     </div>
 
-    <div class="card-body">
-        <h2 class="card-title">{{ product.name }}</h2>
-
-        <!-- 💰 Pricing -->
-        {% if product.is_sale and product.sale_price %}
-        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
-            <strike>{{ product.price }}$</strike>
-
-            <span>{{ product.sale_price}}$</span>
-        </p>
-        {% else %}
-        <p class="font-mono font-normal flex items-center space-x-8 mt-4 text-2xl">
-            <span>{{ product.price}}$</span>
-        </p>
-        {% endif %}
-        <!-- 🛒 Button -->
-        <div class="card-actions justify-center mt-4">
-            <a class="btn" href="{% url 'product-detail' product.id %}">
-                View Details
-            </a>
-        </div>
-    </div>
+    
 </div>

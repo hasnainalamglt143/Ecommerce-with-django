@@ -50,7 +50,7 @@
         </li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">HasnainCommerce</a>
+    <a class="btn btn-ghost text-lg md:text-xl" href="#">ShopEase</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -128,7 +128,6 @@
   <div class="navbar-end">
     <a class="btn" href="{% url 'cart_summary' %}">
       <i class="fa-solid fa-cart-shopping"></i>
-      <span>Cart</span>
       <span id="cart_quantity" class="ml-2 btn px-2 bg-black/80 w-fit h-fit rounded-full text-white">
         {{cart|length}}
       </span>

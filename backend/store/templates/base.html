@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% tailwind_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
     <script src={% static "js/carousel.js" %}></script>
     <script src={% static "js/add_to_cart.js" %}></script>
     <script src={% static "js/stripe_payment.js" %}></script>
@@ -18,7 +21,7 @@
 
 </head>
 
-<body class="bg-gray-50 w-screen overflow-x-hidden relative text-black font-serif leading-normal tracking-normal">
+<body class="bg-gray-50 w-full relative  leading-normal tracking-normal font-sans antialiased text-gray-900">
     {% include 'components/navbar.html' with categories=categories %}
     {% include 'components/toast.html' %}
     {% include 'components/successMessage.html' %}

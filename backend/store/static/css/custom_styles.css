@@ -1,0 +1,48 @@
+/* Swiper container - 90% of screen height and centered */
+    .swiper {
+      width: 90%;
+      height: 70vh;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #fff;
+      /* background: #333; */
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Make buttons more visible */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .swiper {
+        width: 95%;
+        height: 70vh;
+      }
+
+      .swiper-slide {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .swiper {
+        width: 100%;
+        height: 60vh;
+      }
+    }

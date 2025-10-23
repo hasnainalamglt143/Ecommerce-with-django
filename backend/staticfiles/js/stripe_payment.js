@@ -17,7 +17,6 @@ async function initialize() {
     });
     let res=await response.json()
     let { clientSecret } = res;
-    console.log("response",response)
 
     return clientSecret;
   };

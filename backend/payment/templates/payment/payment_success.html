@@ -101,14 +101,16 @@
 </div>
 
 <script>
+   let url=window.location.origin;
     const orderId = "{{ order.id }}";
     const statusText = document.getElementById("status-text");
     const loading = document.getElementById("loading");
     const orderDetails = document.getElementById("order-details");
+    let tries=0;
 
     async function checkStatus() {
         try {
-            let response = await fetch(`http://127.0.0.1:8000/payment/check-status/${orderId}/`,{method:"POST"});
+            let response = await fetch(`${url}/payment/check-status/${orderId}/`,{method:"POST"});
             let data = await response.json();
 
             if (data.paid) {
@@ -118,10 +120,17 @@
                 // Inject rendered HTML from server into the page
                 orderDetails.classList.remove("hidden");
             } else {
+                tries+=1;
+                if(tries>=10){
+                    loading.style.display = "none";
+                    statusText.innerHTML = "<span class='text-red-600'>❌ Payment could not be confirmed. Please contact support.</span>";
+                    return;
+                }
                 setTimeout(checkStatus, 3000); // retry in 3s
             }
         } catch (err) {
             console.error(err);
+            loading.style.display = "none";
             statusText.innerHTML = "<span class='text-red-600'>Error checking payment.</span>";
         }
     }
